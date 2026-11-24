@@ -1,0 +1,7 @@
+dmidecode
+smartmontools
+memtester
+stress-ng
+lm-sensors
+lshw
+pciutils
