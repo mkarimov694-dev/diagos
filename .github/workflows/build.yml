@@ -15,14 +15,13 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Установка инструментов
+      - name: Сборка в контейнере Debian (cpupass + ISO)
         run: |
-          sudo apt-get update
-          sudo apt-get install -y live-build nasm binutils \
-            debootstrap debian-archive-keyring
-
-      - name: Сборка (cpupass + ISO)
-        run: sudo bash build.sh
+          docker run --rm --privileged -v "$PWD":/work -w /work debian:bookworm bash -c "
+            apt-get update &&
+            apt-get install -y live-build nasm binutils debootstrap &&
+            bash build.sh
+          "
 
       - name: Проверка cpupass
         run: ./cpupass
