@@ -1,0 +1,3 @@
+=== DiagOS: диагностика компьютера ===
+Команды: dmidecode | smartctl -a /dev/sda | memtester 512M 1
+         stress-ng --cpu 0 -t 60s | sensors | cpupass
